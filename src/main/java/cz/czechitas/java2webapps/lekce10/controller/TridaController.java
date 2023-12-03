@@ -11,24 +11,24 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/trida")
 public class TridaController {
 
-  private final TridaService tridaService;
+    private final TridaService tridaService;
 
-  public TridaController(TridaService tridaService) {
-    this.tridaService = tridaService;
-  }
+    public TridaController(TridaService tridaService) {
+        this.tridaService = tridaService;
+    }
 
-  @GetMapping("/")
-  public ModelAndView index() {
-    ModelAndView modelAndView = new ModelAndView("/trida/index");
-    modelAndView.addObject("tridy", tridaService.findAll());
-    return modelAndView;
-  }
+    @GetMapping("")
+    public ModelAndView index() {
+        ModelAndView modelAndView = new ModelAndView("/trida/index");
+        modelAndView.addObject("tridy", tridaService.findAll());
+        return modelAndView;
+    }
 
-  @GetMapping("/{id}")
-  public ModelAndView detail(@PathVariable int id) {
-    ModelAndView modelAndView = new ModelAndView("/trida/detail");
-    modelAndView.addObject("trida", tridaService.findById(id));
-    modelAndView.addObject("studenti", tridaService.getStudents(id));
-    return modelAndView;
-  }
+    @GetMapping("/{id}")
+    public ModelAndView detail(@PathVariable int id) {
+        ModelAndView modelAndView = new ModelAndView("/trida/detail");
+        modelAndView.addObject("trida", tridaService.findById(id));
+        modelAndView.addObject("studenti", tridaService.getStudents(id));
+        return modelAndView;
+    }
 }
